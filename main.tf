@@ -13,6 +13,9 @@ resource "aws_internet_gateway" "main" {
   tags = local.igw_final_tags
 
 }
+data "aws_availability_zones" "available" {
+  state = "available"
+}
 #public subnet
 resource "aws_subnet" "main" {
   count = length(var.public_subnet_cidrs)  
